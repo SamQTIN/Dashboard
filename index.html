@@ -1,58 +1,64 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <title>Echo Show Dashboard</title>
   <meta charset="UTF-8">
-  <title>My Echo Show Dashboard</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
+      margin: 0;
       background: #111;
       color: #fff;
-      text-align: center;
-      margin: 0;
-      padding: 20px;
+      font-family: Arial, sans-serif;
     }
-    .widget {
-      margin: 20px;
-      padding: 20px;
+    #topbar {
       background: #222;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      padding: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+    button {
+      padding: 10px 15px;
+      background: #444;
+      border: none;
+      color: #fff;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1em;
+    }
+    button:hover {
+      background: #666;
+    }
+    iframe {
+      width: 100%;
+      height: 87vh;
+      border: none;
+      background: #fff;
     }
   </style>
+  <script>
+    // 🔄 Keep Silk alive
+    setInterval(() => {
+      console.log("Keeping Silk alive...");
+    }, 20000);
+
+    // Switch iframe site
+    function loadSite(url) {
+      document.getElementById("browserFrame").src = url;
+    }
+  </script>
 </head>
 <body>
-  <h1>My Dashboard</h1>
-
-  <div class="widget">
-    <h2>🕒 Clock</h2>
-    <p id="clock"></p>
+  <div id="topbar">
+    <button onclick="loadSite('https://www.google.com')">Google</button>
+    <button onclick="loadSite('https://www.youtube.com')">YouTube</button>
+    <button onclick="loadSite('https://www.reddit.com')">Reddit</button>
+    <button onclick="loadSite('https://chat.openai.com')">ChatGPT</button>
   </div>
 
-  <div class="widget">
-    <h2>☀️ Weather (Manual)</h2>
-    <p>Sunny, 28°C</p>
-  </div>
-
-  <div class="widget">
-    <h2>📝 Notes</h2>
-    <p>Don’t forget to feed the cat 🐱</p>
-  </div>
- <!-- Keep Silk Open script -->
-  <script>
-    var AlwaysUseSilk = true;
-    var SilkVisualMode = true;
-  </script>
-  <script defer src="https://dagammla.gitlab.io/keep-silk-open/keep.js"></script>
-
-  <script>
-    // Update clock
-    function updateClock() {
-      const now = new Date();
-      document.getElementById("clock").innerText = now.toLocaleTimeString();
-    }
-    setInterval(updateClock, 1000);
-    updateClock();
-  </script>
+  <iframe id="browserFrame" src="https://www.google.com"></iframe>
 </body>
 </html>
+
+
