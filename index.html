@@ -38,3 +38,21 @@
     <h2>📝 Notes</h2>
     <p>Don’t forget to feed the cat 🐱</p>
   </div>
+ <!-- Keep Silk Open script -->
+  <script>
+    var AlwaysUseSilk = true;
+    var SilkVisualMode = true;
+  </script>
+  <script defer src="https://dagammla.gitlab.io/keep-silk-open/keep.js"></script>
+
+  <script>
+    // Update clock
+    function updateClock() {
+      const now = new Date();
+      document.getElementById("clock").innerText = now.toLocaleTimeString();
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+  </script>
+</body>
+</html>
